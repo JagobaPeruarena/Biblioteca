@@ -40,7 +40,7 @@ public class Libro {
 	
 	@Override
 	public String toString() {
-		return "Libroº"+id+": "+titulo+ " del autor: "+autor+" con un total de: "+numPag+" paginas" ;
+		return "Libroº"+id+": "+titulo+ " del autor: "+autor+" con un total de: "+numPag+" paginas\n" ;
 	}
 	public Libro() {
 		
