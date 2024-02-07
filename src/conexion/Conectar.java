@@ -10,10 +10,19 @@ public class Conectar {
 	public Conectar() {
 		
 		try {
-			Class.forName("com.mysql.jbc.Driver");
-			String url = "jbc:mysql://localhost/biblioteca";
-			cn = (Connection) DriverManager.getConnection(url,"root", "");
-		} catch (Exception e) {
+
+			final String HOST = "localhost";
+			final String USERNAME = "root";
+			final String PASSWORD = "";
+			final String BBDD = "biblioteca";
+
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			cn = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
+			System.out.println("Conexion establecida");
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		

@@ -35,7 +35,7 @@ public class Menu {
 
 	public static void menuLibros() {
 
-		System.out.println("Menu libros seleccionada\n");
+		
 		System.out.println(VER_LIBRO + ". Ver libro");
 		System.out.println(INSERTAR_LIBRO + ". Insertar libro");
 		System.out.println(ELIMINAR_LIBRO + ". Eliminar libro");
@@ -45,7 +45,7 @@ public class Menu {
 	}
 
 	public static void menuSocios() {
-		System.out.println("Menu Socios seleccionada\n");
+	
 		System.out.println(VER_SOCIO + ". Ver Socio");
 		System.out.println(INSERTAR_SOCIO + ". Insertar socio");
 		System.out.println(ELIMINAR_SOCIO + ". Eliminar socio");
@@ -54,7 +54,7 @@ public class Menu {
 	}
 
 	public static void menuPrestamos() {
-		System.out.println("Menu Prestamos seleccionada\n");
+		
 		System.out.println(VER_PRESTAMO + ". Ver prestamo");
 		System.out.println(INSERTAR_PRESTAMO + ". Insertar prestamo");
 		System.out.println(ELIMINAR_PRESTAMO + ". Eliminar prestamo");

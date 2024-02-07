@@ -37,6 +37,11 @@ public class Libro {
 		this.titulo = titulo;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return "Libroº"+id+": "+titulo+ " del autor: "+autor+" con un total de: "+numPag+" paginas" ;
+	}
 	public Libro() {
 		
 	}
