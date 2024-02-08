@@ -50,6 +50,12 @@ public class Socio {
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
 	}
+	
+	@Override
+	public String toString() {
+		return "Socioº" + id + ": " + nombre + " " + apellido + ", " + direccion
+				+ " de " + poblacion + " en " + provincia + " "+ ", DNI:" + dni+"\n" ;
+	}
 	public Socio(int id, String nombre, String apellido, String direccion, String dni, String poblacion,
 			String provincia) {
 		super();
