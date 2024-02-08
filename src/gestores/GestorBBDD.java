@@ -80,4 +80,18 @@ public class GestorBBDD extends Conectar {
 		return null;
 
 	}
+	public void modificarLibro(Libro libro) {
+		String query = "UPDATE libros SET autor = ?, titulo = ? , num_pag = ? where id = ?";
+		try (PreparedStatement st = getCon().prepareStatement(query)) {
+			st.setString(1, libro.getTitulo());
+			st.setString(2, libro.getAutor());
+			st.setInt(3, libro.getNumPag());
+			st.setInt(4, libro.getId());
+
+			st.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -10,22 +10,25 @@ public class GestorLibros {
 
 	public static void run(Scanner scan) {
 		int opcionLibro = 1;
-		GestorBBDD gestor = new GestorBBDD();
+		GestorBBDD gestorBBDD = new GestorBBDD();
 		do {
 			Menu.menuLibros();
 			opcionLibro = Integer.parseInt(scan.nextLine());
 			switch (opcionLibro) {
 			case Menu.VER_LIBRO:
-				Visor.mostrarLibros(gestor.getLibros());
+				Visor.mostrarLibros(gestorBBDD.getLibros());
 				break;
 
 			case Menu.INSERTAR_LIBRO:
-
+				gestorBBDD.insertarLibro(FormularioDeDatos.pedirDatosLibro(scan));
+								
 				break;
 			case Menu.ELIMINAR_LIBRO:
+				gestorBBDD.eliminarLibro(FormularioDeDatos.pedirIdLibro(scan));
 
 				break;
 			case Menu.MODIFICAR_LIBRO:
+				gestorBBDD.modificarLibro(FormularioDeDatos.modificarDatosLibro(gestorBBDD.getLibroId(FormularioDeDatos.pedirIdLibro(scan)), scan));
 				break;
 			}
 		} while (opcionLibro != 0);
