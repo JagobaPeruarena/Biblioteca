@@ -16,6 +16,7 @@ public class Visor {
 	public static void mostrarLibro(Libro libro) {
 		System.out.println(libro.toString());
 	}
+	
 	public static void mostrarSocios(ArrayList<Socio> socios) {
 		for (Socio socio : socios) {
 			System.out.println(socio.toString());
@@ -29,7 +30,14 @@ public class Visor {
 		System.out.println(socio.toString());
 	}
 	
-	
+	public static void mostrarPrestamos(ArrayList<Prestamo> prestamos) {
+		for (Prestamo prestamo : prestamos) {
+			System.out.println(prestamo.toString());
+		}
+	}
+	public static void mostrarPrestamo(Prestamo prestamo) {
+		System.out.println(prestamo.toString());
+	}
 	
 	
 	

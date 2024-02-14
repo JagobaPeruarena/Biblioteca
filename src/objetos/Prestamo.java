@@ -39,4 +39,9 @@ public class Prestamo {
 		this.id_socio = id_socio;
 	}
 	public Prestamo() {}
+	@Override
+	public String toString() {
+		return "Prestamo "+id_libro+"-"+id_socio+" fecha:"+fecha+" estado:"+devuelto;
+	}
+	
 }

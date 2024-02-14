@@ -28,7 +28,7 @@ public class GestorLibros {
 
 				break;
 			case Menu.MODIFICAR_LIBRO:
-				gestorBBDD.modificarLibro(FormularioDeDatos.modificarDatosLibro(gestorBBDD.getLibroId(FormularioDeDatos.pedirIdLibro(scan)), scan));
+				gestorBBDD.modificarLibro(FormularioDeDatos.modificarDatosLibro(gestorBBDD.getLibroById(FormularioDeDatos.pedirIdLibro(scan)), scan));
 				break;
 			}
 		} while (opcionLibro != 0);

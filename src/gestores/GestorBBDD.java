@@ -1,5 +1,6 @@
 package gestores;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,9 +8,11 @@ import java.util.ArrayList;
 
 import conexion.Conectar;
 import objetos.Libro;
+import objetos.Prestamo;
 import objetos.Socio;
 
 public class GestorBBDD extends Conectar {
+
 	public void insertarLibro(Libro libro) {
 		String query = "INSERT INTO libros (titulo, autor,num_pag) VALUES (?, ?, ?)";
 		try (PreparedStatement st = getCon().prepareStatement(query)) {
@@ -41,7 +44,7 @@ public class GestorBBDD extends Conectar {
 		ArrayList<Libro> libros = new ArrayList<Libro>();
 		String query = "SELECT * FROM libros";
 		try (PreparedStatement st = getCon().prepareStatement(query)) {
-			
+
 			ResultSet rs = st.executeQuery();
 
 			while (rs.next()) {
@@ -51,7 +54,7 @@ public class GestorBBDD extends Conectar {
 				libro.setTitulo(rs.getString("titulo"));
 				libro.setNumPag(rs.getInt("num_pag"));
 				libros.add(libro);
-				
+
 			}
 			return libros;
 		} catch (SQLException e) {
@@ -60,15 +63,15 @@ public class GestorBBDD extends Conectar {
 		return null;
 
 	}
-	public Libro getLibroId(int id) {
+
+	public Libro getLibroById(int id) {
 		String query = "SELECT * FROM libros WHERE id = ?";
 		try (PreparedStatement st = getCon().prepareStatement(query)) {
 			st.setInt(1, id);
 			ResultSet rs = st.executeQuery();
-			
 
-	        if (rs.next()) {
-			
+			if (rs.next()) {
+
 				Libro libro = new Libro();
 				libro.setId(rs.getInt("id"));
 				libro.setAutor(rs.getString("autor"));
@@ -76,16 +79,17 @@ public class GestorBBDD extends Conectar {
 				libro.setNumPag(rs.getInt("num_pag"));
 
 				rs.close();
-	            st.close();
-	            return libro;
-	        }
-			
+				st.close();
+				return libro;
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 
 	}
+
 	public void modificarLibro(Libro libro) {
 		String query = "UPDATE libros SET autor = ?, titulo = ? , num_pag = ? where id = ?";
 		try (PreparedStatement st = getCon().prepareStatement(query)) {
@@ -99,7 +103,9 @@ public class GestorBBDD extends Conectar {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}public void insertarSocio(Socio socio) {
+	}
+
+	public void insertarSocio(Socio socio) {
 		String query = "INSERT INTO socios (nombre,apellido,direccion,poblacion,provincia,dni) VALUES (?, ?, ?,?,?,?)";
 		try (PreparedStatement st = getCon().prepareStatement(query)) {
 			st.setString(1, socio.getNombre());
@@ -108,7 +114,7 @@ public class GestorBBDD extends Conectar {
 			st.setString(4, socio.getPoblacion());
 			st.setString(5, socio.getProvincia());
 			st.setString(6, socio.getDni());
-			
+
 			st.executeUpdate();
 
 		} catch (SQLException e) {
@@ -133,7 +139,7 @@ public class GestorBBDD extends Conectar {
 		ArrayList<Socio> socios = new ArrayList<Socio>();
 		String query = "SELECT * FROM socios";
 		try (PreparedStatement st = getCon().prepareStatement(query)) {
-			
+
 			ResultSet rs = st.executeQuery();
 
 			while (rs.next()) {
@@ -146,7 +152,7 @@ public class GestorBBDD extends Conectar {
 				socio.setProvincia(rs.getString("provincia"));
 				socio.setDni(rs.getString("dni"));
 				socios.add(socio);
-				
+
 			}
 			return socios;
 		} catch (SQLException e) {
@@ -155,15 +161,15 @@ public class GestorBBDD extends Conectar {
 		return null;
 
 	}
-	public Socio getSocioId(int id) {
+
+	public Socio getSocioById(int id) {
 		String query = "SELECT * FROM socios WHERE id = ?";
 		try (PreparedStatement st = getCon().prepareStatement(query)) {
 			st.setInt(1, id);
 			ResultSet rs = st.executeQuery();
-			
 
-	        if (rs.next()) {
-			
+			if (rs.next()) {
+
 				Socio socio = new Socio();
 				socio.setId(rs.getInt("id"));
 				socio.setNombre(rs.getString("nombre"));
@@ -172,20 +178,20 @@ public class GestorBBDD extends Conectar {
 				socio.setPoblacion(rs.getString("poblacion"));
 				socio.setProvincia(rs.getString("provincia"));
 				socio.setDni(rs.getString("dni"));
-				
 
 				rs.close();
-	            st.close();
-	            return socio;
-	        }
-			
+				st.close();
+				return socio;
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 
 	}
-	public void modificarSocio (Socio socio) {
+
+	public void modificarSocio(Socio socio) {
 		String query = "UPDATE socios SET nombre = ?, apellido = ? , direccion = ?, poblacion=?,provincia=?,dni=?  where id = ?";
 		try (PreparedStatement st = getCon().prepareStatement(query)) {
 			st.setString(1, socio.getNombre());
@@ -199,6 +205,116 @@ public class GestorBBDD extends Conectar {
 			st.executeUpdate();
 
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void insertarPrestamo(Prestamo prestamo) {
+		java.sql.Date sqlDate = new java.sql.Date(prestamo.getFecha().getTime());
+		String query = "INSERT INTO prestamos (devuelto,fecha,id_libro,id_socio) VALUES (?,?,?,?)";
+		try (PreparedStatement st = getCon().prepareStatement(query)) {
+			st.setBoolean(1, prestamo.isDevuelto());
+			st.setDate(2, sqlDate);
+			st.setInt(3, prestamo.getId_libro());
+			st.setInt(4, prestamo.getId_socio());
+
+			st.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public ArrayList<Prestamo> getPrestamosNoDevueltos() {
+		ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
+		String query = "SELECT * FROM prestamos WHERE devuelto = 0";
+		try (PreparedStatement st = getCon().prepareStatement(query)) {
+
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+				Prestamo prestamo = new Prestamo();
+				prestamo.setDevuelto(rs.getBoolean("devuelto"));
+				prestamo.setFecha(rs.getDate("fecha"));
+				prestamo.setId_libro(rs.getInt("id_libro"));
+				prestamo.setId_socio(rs.getInt("id_socio"));
+
+				prestamos.add(prestamo);
+
+			}
+			return prestamos;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
+	public ArrayList<Prestamo> getPrestamosDeSocio(int idSocio) {
+		ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
+		String query = "SELECT * FROM prestamos WHERE id_socio = ?";
+		try (PreparedStatement st = getCon().prepareStatement(query)) {
+			st.setInt(1, idSocio);
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+				Prestamo prestamo = new Prestamo();
+				prestamo.setDevuelto(rs.getBoolean("devuelto"));
+				prestamo.setFecha(rs.getDate("fecha"));
+				prestamo.setId_libro(rs.getInt("id_libro"));
+				prestamo.setId_socio(rs.getInt("id_socio"));
+
+				prestamos.add(prestamo);
+
+			}
+			return prestamos;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
+	public Prestamo getPrestamo(int idSocio, int idLibro) {
+
+		String query = "SELECT * FROM prestamos WHERE id_socio = ? and id_libro=?";
+		try (PreparedStatement st = getCon().prepareStatement(query)) {
+			st.setInt(1, idSocio);
+			st.setInt(2, idLibro);
+			ResultSet rs = st.executeQuery();
+
+			if (rs.next()) {
+
+				Prestamo prestamo = new Prestamo();
+				prestamo.setDevuelto(rs.getBoolean("devuelto"));
+				prestamo.setFecha(rs.getDate("fecha"));
+				prestamo.setId_libro(rs.getInt("id_libro"));
+				prestamo.setId_socio(rs.getInt("id_socio"));
+
+				rs.close();
+				st.close();
+				return prestamo;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
+	public void modificarPrestamo(Prestamo prestamo) {
+		java.sql.Date sqlDate = new java.sql.Date( (new java.util.Date().getTime()));
+		String query = "UPDATE prestamos SET devuelto = 1 , fecha = ? where id_libro=? AND id_socio=?";
+		try (PreparedStatement st = getCon().prepareStatement(query)) {
+
+			st.setDate(1, sqlDate);
+			st.setInt(2, prestamo.getId_libro());
+			st.setInt(3, prestamo.getId_socio());
+
+			st.executeUpdate();
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

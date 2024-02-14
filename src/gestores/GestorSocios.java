@@ -26,7 +26,7 @@ public class GestorSocios {
 				gestorBBDD.eliminarSocio(FormularioDeDatos.pedirIdSocio(scan));
 				break;
 			case Menu.MODIFICAR_SOCIO:
-				gestorBBDD.modificarSocio(FormularioDeDatos.modificarDatosSocio(gestorBBDD.getSocioId(FormularioDeDatos.pedirIdSocio(scan)), scan));
+				gestorBBDD.modificarSocio(FormularioDeDatos.modificarDatosSocio(gestorBBDD.getSocioById(FormularioDeDatos.pedirIdSocio(scan)), scan));
 				break;
 			}
 		} while (opcionSocio != 0);

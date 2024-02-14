@@ -17,10 +17,10 @@ public class Menu {
 	public static final int ELIMINAR_SOCIO = 3;
 	public static final int MODIFICAR_SOCIO = 4;
 
-	public static final int VER_PRESTAMO = 1;
-	public static final int INSERTAR_PRESTAMO = 2;
-	public static final int ELIMINAR_PRESTAMO = 3;
-	public static final int MODIFICAR_PRESTAMO = 4;
+	public static final int HACER_PRESTAMO = 1;
+	public static final int VER_PRESTAMOS_NO_DEVUELTOS = 2;
+	public static final int PRESTAMOS_SOCIO = 3;
+	public static final int DEVOLVER_LIBRO = 4;
 
 	public static void menuPrincipal() {
 
@@ -55,10 +55,10 @@ public class Menu {
 
 	public static void menuPrestamos() {
 		
-		System.out.println(VER_PRESTAMO + ". Ver prestamo");
-		System.out.println(INSERTAR_PRESTAMO + ". Insertar prestamo");
-		System.out.println(ELIMINAR_PRESTAMO + ". Eliminar prestamo");
-		System.out.println(MODIFICAR_PRESTAMO + ". Modificar prestamo");
+		System.out.println(HACER_PRESTAMO + ". Hacer un prestamo");
+		System.out.println(VER_PRESTAMOS_NO_DEVUELTOS + ". Ver prestamos sin devolver");
+		System.out.println(PRESTAMOS_SOCIO + ". Ver prestamos de un socio");
+		System.out.println(DEVOLVER_LIBRO + ". Devolver un libro");
 		System.out.println(SALIR + ". Salir");
 	}
 }
