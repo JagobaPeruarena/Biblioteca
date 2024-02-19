@@ -26,6 +26,13 @@ public class GestorPrestamos {
 			case Menu.DEVOLVER_LIBRO:
 				gestorBBDD.modificarPrestamo(gestorBBDD.getPrestamo(FormularioDeDatos.pedirIdLibro(scan), FormularioDeDatos.pedirIdSocio(scan)));
 				break;
+			case Menu.DISPONIBILIDAD_LIBRO:
+				if (gestorBBDD.disponibilidadLibro(FormularioDeDatos.pedirIdLibro(scan))) {
+					Visor.mostrarMensaje("El libro seleccionado esta disponible");
+				}else {
+					Visor.mostrarMensaje("El libro no esta disponible");
+				}
+				break;
 			}
 		} while (opcionPrestamo != 0);
 	}

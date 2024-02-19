@@ -18,19 +18,19 @@ public class GestorBiblioteca {
 			opcionPrincipal = Integer.parseInt(scan.nextLine());
 			switch (opcionPrincipal) {
 			case Menu.GESTIONAR_LIBROS:
-				Visor.mostrarMensaje("Menu libros seleccionada\n");
+				Visor.mostrarMensaje("Menu libros seleccionada");
 				GestorLibros.run(scan);
 
 				break;
 
 			case Menu.GESTIONAR_PRESTAMOS:
-				Visor.mostrarMensaje("Menu Prestamos seleccionada\n");
+				Visor.mostrarMensaje("Menu Prestamos seleccionada");
 
 				GestorPrestamos.run(scan);
 
 				break;
 			case Menu.GESTIONAR_SOCIOS:
-				Visor.mostrarMensaje("Menu Socios seleccionada\n");
+				Visor.mostrarMensaje("Menu Socios seleccionada");
 				GestorSocios.run(scan);
 
 				break;

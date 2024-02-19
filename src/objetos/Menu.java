@@ -21,6 +21,7 @@ public class Menu {
 	public static final int VER_PRESTAMOS_NO_DEVUELTOS = 2;
 	public static final int PRESTAMOS_SOCIO = 3;
 	public static final int DEVOLVER_LIBRO = 4;
+	public static final int DISPONIBILIDAD_LIBRO= 5;
 
 	public static void menuPrincipal() {
 
@@ -59,6 +60,7 @@ public class Menu {
 		System.out.println(VER_PRESTAMOS_NO_DEVUELTOS + ". Ver prestamos sin devolver");
 		System.out.println(PRESTAMOS_SOCIO + ". Ver prestamos de un socio");
 		System.out.println(DEVOLVER_LIBRO + ". Devolver un libro");
+		System.out.println(DISPONIBILIDAD_LIBRO + ". Ver disponibilidad de un libro");
 		System.out.println(SALIR + ". Salir");
 	}
 }

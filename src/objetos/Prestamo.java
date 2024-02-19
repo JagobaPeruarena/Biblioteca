@@ -41,7 +41,7 @@ public class Prestamo {
 	public Prestamo() {}
 	@Override
 	public String toString() {
-		return "Prestamo "+id_libro+"-"+id_socio+" fecha:"+fecha+" estado:"+devuelto;
+		return "Prestamo "+id_libro+"-"+id_socio+" fecha:"+fecha+" Devuelto:"+devuelto;
 	}
 	
 }

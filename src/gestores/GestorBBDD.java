@@ -302,6 +302,22 @@ public class GestorBBDD extends Conectar {
 		return null;
 
 	}
+	public boolean disponibilidadLibro(int idLibro) {
+		String query ="SELECT * FROM prestamos WHERE id_libro=? and devuelto=0";
+		try(PreparedStatement st = getCon().prepareStatement(query)) {
+			st.setInt(1, idLibro);
+			ResultSet rs = st.executeQuery();
+			
+			if (rs.next()) {
+				return false;
+			}else {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 	public void modificarPrestamo(Prestamo prestamo) {
 		java.sql.Date sqlDate = new java.sql.Date( (new java.util.Date().getTime()));
