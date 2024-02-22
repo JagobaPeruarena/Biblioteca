@@ -95,15 +95,15 @@ public class FormularioDeDatos {
 		
 		do  {
 			Visor.mostrarMensaje("Di el id del Libro, valida");
-			newPrestamo.setId_libro(Integer.parseInt(scan.nextLine()));
+			newPrestamo.setLibro(gestor.getLibroById(Integer.parseInt(scan.nextLine())));
 			
-		}while(gestor.getLibroById(newPrestamo.getId_libro()) == null );
+		}while(newPrestamo.getLibro() == null );
 		
 		do  {
 			Visor.mostrarMensaje("Di la id del Socio, valida");
-			newPrestamo.setId_socio(Integer.parseInt(scan.nextLine()));
+			newPrestamo.setSocio(gestor.getSocioById(Integer.parseInt(scan.nextLine())));
 			
-		}while(gestor.getSocioById(newPrestamo.getId_socio()) == null );
+		}while(newPrestamo.getSocio() == null );
 		
 		
 		return newPrestamo;

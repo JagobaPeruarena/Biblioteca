@@ -5,8 +5,8 @@ import java.util.Date;
 public class Prestamo {
 	private boolean devuelto;
 	private Date fecha;
-	private int id_libro;
-	private int id_socio;
+	private Libro libro;
+	private Socio socio;
 	public boolean isDevuelto() {
 		return devuelto;
 	}
@@ -19,29 +19,32 @@ public class Prestamo {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public int getId_libro() {
-		return id_libro;
+	
+	public Libro getLibro() {
+		return libro;
 	}
-	public void setId_libro(int id_libro) {
-		this.id_libro = id_libro;
+	public void setLibro(Libro libro) {
+		this.libro = libro;
 	}
-	public int getId_socio() {
-		return id_socio;
+	public Socio getSocio() {
+		return socio;
 	}
-	public void setId_socio(int id_socio) {
-		this.id_socio = id_socio;
+	public void setSocio(Socio socio) {
+		this.socio = socio;
 	}
-	public Prestamo(boolean devuelto, Date fecha, int id_libro, int id_socio) {
+	
+	
+	public Prestamo(boolean devuelto, Date fecha, Libro libro, Socio socio) {
 		super();
 		this.devuelto = devuelto;
 		this.fecha = fecha;
-		this.id_libro = id_libro;
-		this.id_socio = id_socio;
+		this.libro = libro;
+		this.socio = socio;
 	}
 	public Prestamo() {}
 	@Override
 	public String toString() {
-		return "Prestamo "+id_libro+"-"+id_socio+" fecha:"+fecha+" Devuelto:"+devuelto;
+		return "Prestamo: "+libro.toString()+"\n-"+socio.toString()+"\n fecha:"+fecha+" Devuelto:"+devuelto;
 	}
 	
 }

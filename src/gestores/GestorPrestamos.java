@@ -23,6 +23,7 @@ public class GestorPrestamos {
 			case Menu.PRESTAMOS_SOCIO:
 				Visor.mostrarPrestamos(gestorBBDD.getPrestamosDeSocio(FormularioDeDatos.pedirIdSocio(scan)));
 				break;
+			
 			case Menu.DEVOLVER_LIBRO:
 				gestorBBDD.modificarPrestamo(gestorBBDD.getPrestamo(FormularioDeDatos.pedirIdLibro(scan), FormularioDeDatos.pedirIdSocio(scan)));
 				break;
